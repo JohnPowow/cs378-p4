@@ -1,11 +1,30 @@
-const axios = require('axios');
+import axios from "axios";
+import React, { useEffect, useState } from 'react';
 
-let url = "https://pokeapi.co/api/v2/pokemon/ditto";
+function Pokecalls() {
+    const url = "https://pokeapi.co/api/v2/pokemon/ditto";
+    const [post, setPost] = React.useState(null);
 
-// This is the second configuration option
-const res = await axios({
-    method: 'get',
-    url: url
-});
+    //componentDidMount for Hooks
+    useEffect(() => {
+        axios.get("https://pokeapi.co/api/v2/pokemon/pikachu/")
+        .then((response) => {
+            setPost(response.data)
+        })
+        .catch(error => console.error('That pokemon does not exist')) 
+    },[]);
 
-console.log(res)
+    if(!post) {
+        return null;
+    }
+
+    return(
+        <div> Name: {post.name} 
+            ID: {post.id} </div>
+    )
+
+}
+
+
+
+export default Pokecalls;
