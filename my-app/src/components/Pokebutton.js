@@ -1,5 +1,5 @@
-function Pokebutton() {
-    return <button> Pokemon Button</button>
+function Pokebutton({Pokemon}) {
+    return <button> {Pokemon} button</button>
 }
 
 export default Pokebutton;

@@ -1,13 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from 'react';
+import Pokebutton from "./Pokebutton";
 
-function Pokecalls() {
-    const url = "https://pokeapi.co/api/v2/pokemon/ditto";
+function Pokecalls({pokemon}) {
+    const url = "https://pokeapi.co/api/v2/pokemon/" + pokemon;
     const [post, setPost] = React.useState(null);
 
     //componentDidMount for Hooks
     useEffect(() => {
-        axios.get("https://pokeapi.co/api/v2/pokemon/pikachu/")
+        axios.get(url)
         .then((response) => {
             setPost(response.data)
         })
@@ -19,8 +20,7 @@ function Pokecalls() {
     }
 
     return(
-        <div> Name: {post.name} 
-            ID: {post.id} </div>
+        <Pokebutton Pokemon={post.name} />
     )
 
 }

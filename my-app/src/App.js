@@ -1,8 +1,8 @@
-import Pokecalls from './components/Pokecalls';
+import Window from "./components/Window";
 
 function App() {
   return (
-    <Pokecalls />
+    <Window />
   );
 }
 
