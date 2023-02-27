@@ -1,12 +1,15 @@
+import React, { useState } from 'react';
 import Pokecalls from "./Pokecalls";
 function Window() {
-    const pokemonArray = ["pikachu", "ditto"]
-    const [count, setCount] = useState(2);
+    const [pokeName, setPokeName] = useState('');
+    const [pokeArray, setPokeArray] = useState(["pikachu", "ditto", "magikarp"])
 
     const generateButtons = () => {
         let buttons = [];
-        for (let i = 0; i < count; i++) {
-            buttons.push(<Pokecalls pokemon={pokemonArray[i]} />);
+        console.log(pokeArray)
+        for (let i = 0; i < pokeArray.length; i++) {
+            console.log(pokeArray[i])
+            buttons.push(<Pokecalls pokemon={pokeArray[i]} />);
         }
         return buttons;
     }
@@ -14,6 +17,13 @@ function Window() {
     return (
         <div>
             {generateButtons()}
+
+            <form>
+                <label>
+                    <input type="text" id="pokeName" name="name"  onChange={event => setPokeName(event.target.value)} value={pokeName}/>
+                </label>
+                <button type="button" onClick={() => {setPokeArray([...pokeArray,  pokeName]);}}> Submit </button>
+            </form>
         </div>
     );
 };
