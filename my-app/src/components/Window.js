@@ -5,13 +5,13 @@ import Pokemenu from './Pokemenu';
 function Window() {
     const [pokeName, setPokeName] = useState('');
     const [pokeArray, setPokeArray] = useState(["pikachu", "ditto", "magikarp"])
-    const [activeIndex, setActiveIndex] = useState(-1);
+    const [activeIndex, setActiveIndex] = useState(0);
     const [activeMenu, setActiveMenu] = useState(false);
 
     const generateButtons = () => {
         let buttons = [];
         for (let i = 0; i < pokeArray.length; i++) {
-            buttons.push(<Pokecalls pokemon={pokeArray[i]} menuState={setActiveMenu} />);
+            buttons.push(<Pokecalls pokemon={pokeArray[i]} currentMenu={activeMenu} menuState={setActiveMenu} buttonIndex={i} pokeState={setActiveIndex}/>);
         }
         return buttons;
     }
@@ -48,7 +48,7 @@ function Window() {
             
             
              {activeMenu ? (
-        <p>{ <Pokemenu pokemon={"pikachu"} /> }</p>) : (<p/>)}
+        <p>{ <Pokemenu pokemonList={pokeArray} pokeIndex={activeIndex}/> }</p>) : (<p/>)}
            
         </div>
     );

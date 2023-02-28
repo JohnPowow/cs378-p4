@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from 'react';
 import Pokebutton from "./Pokebutton";
 
-function Pokecalls({ pokemon, menuState}) {
+function Pokecalls({ pokemon, currentMenu, menuState, buttonIndex, pokeState}) {
     const url = "https://pokeapi.co/api/v2/pokemon/" + pokemon;
     const [post, setPost] = useState('');
 
@@ -23,7 +23,7 @@ function Pokecalls({ pokemon, menuState}) {
     }
 
     return (
-        <Pokebutton Pokemon={post.name} menuStatee={menuState}/>
+        <Pokebutton Pokemon={post.name} currentMenuState={currentMenu} menuStatee={menuState} pokeIndex={buttonIndex} pokeStatee={pokeState}/>
     )
 
 }
