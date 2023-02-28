@@ -1,8 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from 'react';
-import Pokebutton from "./Pokebutton";
 
-function Pokecalls({ pokemon, menuState}) {
+function Pokemenu({ pokemon }) {
     const url = "https://pokeapi.co/api/v2/pokemon/" + pokemon;
     const [post, setPost] = useState('');
 
@@ -18,16 +17,17 @@ function Pokecalls({ pokemon, menuState}) {
             })
     }, []);
 
-    if (!post) {
-        return null;
-    }
 
-    return (
-        <Pokebutton Pokemon={post.name} menuStatee={menuState}/>
-    )
+  return ( 
+    
+    <div> 
+      <h1>ID: {post.id}</h1>
+      <h1>Base Experience: {post.base_experience}</h1> 
+      <h1>Weight: {post.weight}</h1>
+      <h1>Height: {post.height}</h1>
+    </div> 
+  ); 
+  
+}; 
 
-}
-
-
-
-export default Pokecalls;
+export default Pokemenu;
